@@ -46,3 +46,19 @@ This is a list:
 
 _this text should be emphasized_
 ```
+
+## Installing with nix
+
+If you use the [Nix](https://nixos.org/nix/) package manager you can install this tool as follows:
+
+```
+$ nix-env -f . -i 
+...
+$ echo "Hello *world*." | md2slack 
+Hello _world_.
+
+$
+```
+
+It will install a script named `md2slack` that accepts input via stdin.
+
