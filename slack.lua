@@ -78,7 +78,7 @@ end
 -- Comments indicate the types of other variables.
 
 function Str(s)
-  return escape(s)
+  return s
 end
 
 function Space()
@@ -98,8 +98,10 @@ function SmallCaps(s)
 end
 
 function Link(s, src, tit)
-  return "<a href='" .. escape(src,true) .. "' title='" ..
-         escape(tit,true) .. "'>" .. s .. "</a>"
+-- slack doc (https://api.slack.com/reference/surfaces/formatting#linking-urls)
+-- says this works but it doesn't:
+-- return "<" .. escape(src,true) .. "|" .. s .. ">"
+  return escape(src,true)
 end
 
 function Image(s, src, tit)
@@ -273,6 +275,9 @@ meta.__index =
 setmetatable(_G, meta)
 
 
+function SoftBreak()
+  return " "
+end
 
 function LineBreak()
   return "\n"
@@ -291,7 +296,7 @@ function Strikeout(s)
 end
 
 function Code(s, attr)
-  return '```' .. s .. '```'
+  return '`' .. s .. '`'
 end
 
 function Header(lev, s, attr)
