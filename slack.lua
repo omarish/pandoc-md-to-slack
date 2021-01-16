@@ -98,8 +98,10 @@ function SmallCaps(s)
 end
 
 function Link(s, src, tit)
-  return "<a href='" .. escape(src,true) .. "' title='" ..
-         escape(tit,true) .. "'>" .. s .. "</a>"
+-- slack doc (https://api.slack.com/reference/surfaces/formatting#linking-urls)
+-- says this works but it doesn't:
+-- return "<" .. escape(src,true) .. "|" .. s .. ">"
+  return escape(src,true)
 end
 
 function Image(s, src, tit)
