@@ -294,7 +294,7 @@ function Strikeout(s)
 end
 
 function Code(s, attr)
-  return '```' .. s .. '```'
+  return '`' .. s .. '`'
 end
 
 function Header(lev, s, attr)
